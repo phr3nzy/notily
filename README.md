@@ -1,4 +1,4 @@
-# notily
+# Notily
 
 > Note taking app
 

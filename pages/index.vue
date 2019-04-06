@@ -23,12 +23,12 @@
 
 <script>
 export default {
-  mounted() {
-    this.$vs.loading();
-    setTimeout(() => {
-      this.$vs.loading.close();
-    }, 3000);
-  }
+	mounted() {
+		this.$vs.loading();
+		setTimeout(() => {
+			this.$vs.loading.close();
+		}, 3000);
+	}
 };
 </script>
 

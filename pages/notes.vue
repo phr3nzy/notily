@@ -28,26 +28,26 @@
 <script>
 import db from "../db/index.js";
 export default {
-  data() {
-    return {
-      response: "",
-      notes: []
-    };
-  },
-  methods: {
-    async createNote() {
-      const note = await db.notes.insert({ title: "Hello!" });
-      this.response = note;
-    },
-    async getNotes() {
-      try {
-        const notes = await db.notes.find({});
-        this.notes = notes;
-      } catch (err) {
-        this.notes = err;
-      }
-    }
-  }
+	data() {
+		return {
+			response: "",
+			notes: []
+		};
+	},
+	methods: {
+		async createNote() {
+			const note = await db.notes.insert({ title: "Hello!" });
+			this.response = note;
+		},
+		async getNotes() {
+			try {
+				const notes = await db.notes.find({});
+				this.notes = notes;
+			} catch (err) {
+				this.notes = err;
+			}
+		}
+	}
 };
 </script>
 

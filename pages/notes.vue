@@ -11,7 +11,7 @@
         <div>
           <span>The open source note taking tool</span>
         </div>
-        <span>{{ response }} -- {{ notes }}</span>
+        <span>{{ response }} -- {{ notes }} -- {{ notesList }}</span>
         <div slot="footer">
           <vs-row vs-justify="center">
             <vs-button @click="createNote" color="primary" type="relief" icon="add">Create Notes</vs-button>
@@ -28,26 +28,31 @@
 <script>
 import db from "../db/index.js";
 export default {
-	data() {
-		return {
-			response: "",
-			notes: []
-		};
-	},
-	methods: {
-		async createNote() {
-			const note = await db.notes.insert({ title: "Hello!" });
-			this.response = note;
-		},
-		async getNotes() {
-			try {
-				const notes = await db.notes.find({});
-				this.notes = notes;
-			} catch (err) {
-				this.notes = err;
-			}
-		}
-	}
+  data() {
+    return {
+      response: "",
+      notes: []
+    };
+  },
+  computed: {
+    notesList() {
+      return this.$store.getters["index/notes"];
+    }
+  },
+  methods: {
+    async createNote() {
+      const note = await db.notes.insert({ title: "Hello!" });
+      this.response = note;
+    },
+    async getNotes() {
+      try {
+        const notes = await db.notes.find({});
+        this.notes = notes;
+      } catch (err) {
+        this.notes = err;
+      }
+    }
+  }
 };
 </script>
 

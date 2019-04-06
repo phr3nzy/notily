@@ -3,6 +3,13 @@ module.exports = {
 	head: { title: "Notily" }, // Headers of the page
 	loading: { color: "#fff", height: "3px" }, // Disable default loading bar
 	plugins: ["@/plugins/vuesax"],
+	/*
+	 ** Page Routing Transition
+	 */
+	transition: {
+		name: "fade",
+		mode: "out-in"
+	},
 	build: {
 		extend(config, { isDev, isClient }) {
 			if (isDev && isClient) {

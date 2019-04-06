@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import db from "../db.js";
+import db from "../db/index.js";
 export default {
 	data() {
 		return {

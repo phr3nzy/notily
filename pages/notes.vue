@@ -11,7 +11,7 @@
         <div>
           <span>The open source note taking tool</span>
         </div>
-        <span>{{ response }} -- {{ notes }} -- {{ notesList }}</span>
+        <span>{{ response }} -- {{ notes }}</span>
         <div slot="footer">
           <vs-row vs-justify="center">
             <vs-button @click="createNote" color="primary" type="relief" icon="add">Create Notes</vs-button>
@@ -33,11 +33,6 @@ export default {
       response: "",
       notes: []
     };
-  },
-  computed: {
-    notesList() {
-      return this.$store.getters["index/notes"];
-    }
   },
   methods: {
     async createNote() {

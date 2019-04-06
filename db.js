@@ -3,7 +3,7 @@ const DataStore = require("nedb-promises");
 
 const dbFactory = fileName =>
 	DataStore.create({
-		filename: `./db/${fileName}`,
+		filename: `./${fileName}`,
 		timestampData: true,
 		autoload: true
 	});

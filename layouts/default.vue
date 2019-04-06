@@ -45,8 +45,8 @@
 
 <script>
 export default {
-  data: () => ({
-    activeIndex: 0
-  })
+	data: () => ({
+		activeIndex: 0
+	})
 };
 </script>

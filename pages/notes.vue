@@ -16,8 +16,8 @@
           </div>
           <div slot="footer">
             <vs-row vs-justify="flex-end">
-              <vs-button type="relief" color="primary" icon="favorite"></vs-button>
-              <vs-button type="relief" color="success" icon="turned_in_not"></vs-button>
+              <vs-button type="gradient" color="danger" icon="favorite"></vs-button>
+              <vs-button type="gradient" color="success" icon="turned_in_not"></vs-button>
             </vs-row>
           </div>
         </vs-card>
@@ -44,4 +44,11 @@ export default {
 	}
 };
 </script>
+
+<style lang="stylus">
+.cardx
+  background-color transparent
+  box-shadow 0
+  border none
+</style>
 

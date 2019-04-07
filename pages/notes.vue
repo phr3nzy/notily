@@ -5,21 +5,22 @@
         <div slot="header">
           <h3>Notes</h3>
         </div>
-        <div slot="media">
-          <img>
-        </div>
-        <div>
-          <span>The open source note taking tool</span>
-        </div>
-        <span>{{ response }} -- {{ notes }}</span>
-        <div slot="footer">
-          <vs-row vs-justify="center">
-            <vs-button @click="createNote" color="primary" type="relief" icon="add">Create Notes</vs-button>
-          </vs-row>
-          <vs-row vs-justify="center">
-            <vs-button @click="getNotes" color="primary" type="relief" icon="add">Get Notes</vs-button>
-          </vs-row>
-        </div>
+        <vs-card v-for="(note, index) in notes" :key="index">
+          <div slot="header">
+            <h3>{{ index + 1 }}- {{ note.title }}</h3>
+          </div>
+          <div>
+            <span>
+              {{ note.body }}
+            </span>
+          </div>
+          <div slot="footer">
+            <vs-row vs-justify="flex-end">
+              <vs-button type="relief" color="primary" icon="favorite"></vs-button>
+              <vs-button type="relief" color="success" icon="turned_in_not"></vs-button>
+            </vs-row>
+          </div>
+        </vs-card>
       </vs-card>
     </vs-col>
   </vs-row>
@@ -30,22 +31,15 @@ import db from "../db/index.js";
 export default {
 	data() {
 		return {
-			response: "",
 			notes: []
 		};
 	},
-	methods: {
-		async createNote() {
-			const note = await db.notes.insert({ title: "Hello!" });
-			this.response = note;
-		},
-		async getNotes() {
-			try {
-				const notes = await db.notes.find({});
-				this.notes = notes;
-			} catch (err) {
-				this.notes = err;
-			}
+	async mounted() {
+		try {
+			const notes = await db.notes.find({});
+			this.notes = notes;
+		} catch (err) {
+			this.notes = err;
 		}
 	}
 };
